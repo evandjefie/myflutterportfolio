@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:sliding_sheet/sliding_sheet.dart';
+import 'package:sliding_sheet/sliding_sheet.dart'; // nav at bottom
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
