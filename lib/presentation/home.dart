@@ -64,9 +64,39 @@ class _MyHomeState extends State<MyHome> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Text('Evan DJEFIE'),
+        leading: PopupMenuButton(
+          color: Colors.black,
+          icon: Icon(Icons.menu),
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "projects");
+                },
+                child: Text(
+                  "Projects",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              value: 1,
+            ),
+            PopupMenuItem(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "about");
+                },
+                child: Text(
+                  "About Me",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              value: 2,
+            ),
+          ],
+        ),
       ),
       body: SlidingSheet(
-        backdropColor: Colors.black45,
+        backdropColor: Colors.white,
         elevation: 8,
         cornerRadius: 16,
         snapSpec: const SnapSpec(
@@ -82,10 +112,45 @@ class _MyHomeState extends State<MyHome> {
         // and a parallax effect can be applied to it.
         body: Container(
           child: Stack(
+            alignment: Alignment.center,
             children: [
               Container(
-                child: Image.asset("../../assets/profil.png"),
-              )
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  color: Colors.lightBlueAccent,
+                  margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                          width: 200,
+                          height: 200,
+                          color: Colors.blueGrey,
+                          margin: EdgeInsets.only(top: 50),
+                          child:
+                              // Image.asset("../../assets/profil.png"),
+                              Text("Photo de Profil")),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Evan DJEFIE",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "DevOps Junior | Unity Game Developer",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
+                      ),
+                    ],
+                  )),
             ],
           ),
         ),
