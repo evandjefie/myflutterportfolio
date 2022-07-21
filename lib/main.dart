@@ -5,12 +5,13 @@ import 'package:myflutterportfolio/presentation/about.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: 'about',
+    theme: ThemeData(fontFamily: "Soho"),
+    initialRoute: 'home',
     debugShowCheckedModeBanner: false,
     routes: {
       'home': (context) => MyHome(),
       'about': (context) => MyAbout(),
-      // 'projects': (context) => MyProjects(),
+      'projects': (context) => MyProjects(),
     },
   ));
 }
