@@ -113,6 +113,9 @@ class _MyProjectsState extends State<MyProjects> {
   //   );
   // }
 
+  // Searchbar controller
+  TextEditingController textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,51 +126,70 @@ class _MyProjectsState extends State<MyProjects> {
           "Projects",
         ),
       ),
-      body: SingleChildScrollView(
-        // Scroller widget
-        child: Container(
-            alignment: Alignment.center,
-            child: Column(
-              children: [
-                Text(
-                  "DevOps",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.2,
-                  margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-                  child: PageView(
-                    scrollDirection: Axis.horizontal,
-                    controller: _controller,
-                    children: [
-                      myPro("FLUTTER", "MyPortfolio", "An Flutter mobile app",
-                          "10"),
-                      myPro("FLUTTER", "MyPortfolio", "An Flutter mobile app",
-                          "10"),
-                      myPro("FLUTTER", "MyPortfolio", "An Flutter mobile app",
-                          "10"),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                SmoothPageIndicator(
-                  controller: _controller,
-                  count: 3,
-                  effect:
-                      ExpandingDotsEffect(activeDotColor: Colors.grey.shade800),
-                ),
-              ],
-              // catPro("DevOps"),
-              // SizedBox(height: 15),
-              // catPro("Unity"),
-              // SizedBox(height: 15),
-              // catPro("Ux / Ux"),
-            )),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
+
+            /// In AnimSearchBar widget, the width, textController, onSuffixTap are required properties.
+            /// You have also control over the suffixIcon, prefixIcon, helpText and animationDurationInMilli
+            child: AnimSearchBar(
+              width: MediaQuery.of(context).size.width * 0.9,
+              textController: textController,
+              onSuffixTap: () {
+                setState(() {
+                  textController.clear();
+                });
+              },
+            ),
+          ),
+          SingleChildScrollView(
+            // Scroller widget
+            child: Container(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Text(
+                      "DevOps",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+                      child: PageView(
+                        scrollDirection: Axis.horizontal,
+                        controller: _controller,
+                        children: [
+                          myPro("FLUTTER", "MyPortfolio",
+                              "An Flutter mobile app", "10"),
+                          myPro("FLUTTER", "MyPortfolio",
+                              "An Flutter mobile app", "10"),
+                          myPro("FLUTTER", "MyPortfolio",
+                              "An Flutter mobile app", "10"),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SmoothPageIndicator(
+                      controller: _controller,
+                      count: 3,
+                      effect: ExpandingDotsEffect(
+                          activeDotColor: Colors.grey.shade800),
+                    ),
+                  ],
+                  // catPro("DevOps"),
+                  // SizedBox(height: 15),
+                  // catPro("Unity"),
+                  // SizedBox(height: 15),
+                  // catPro("Ux / Ux"),
+                )),
+          ),
+        ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.white,
