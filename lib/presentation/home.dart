@@ -116,7 +116,7 @@ class _MyHomeState extends State<MyHome> {
             children: [
               Container(
                   width: MediaQuery.of(context).size.width * 0.9,
-                  color: Colors.lightBlueAccent,
+                  color: Colors.white10,
                   margin: EdgeInsets.only(top: 20, left: 20, right: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
